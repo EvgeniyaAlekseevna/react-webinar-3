@@ -26,3 +26,19 @@ export function createElement(name, props = {}, ...children) {
 
   return element;
 }
+
+/**
+ * Вывод корректно формы слова "раз/раза"
+ * @param n
+ * @returns {string}
+ */
+function getCorrectWordForm(n){
+  if ((n % 100 >= 11 && n % 100 <= 14) || (n % 10 === 1))
+    return `раз`;
+  else if (n % 10 >= 2 && n % 10 <= 4)
+    return `раза`;
+  else
+    return `раз`;
+}
+
+export {getCorrectWordForm};

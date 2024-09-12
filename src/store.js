@@ -1,3 +1,5 @@
+import {getCorrectWordForm} from "./utils";
+
 /**
  * Хранилище состояния приложения
  */
@@ -101,24 +103,11 @@ class Store {
    */
   getTitleItem(code){
     let item = this.state.list.find(item => item.code === code);
-    if (item.highlightedCount === 0)
+    let count = item.highlightedCount;
+    if (count === 0)
       return `${item.title}`
-    return `${item.title} | Выделяли ${this.getCorrectWordForm(item.highlightedCount)}`;
+    return `${item.title} | Выделяли ${count} ${getCorrectWordForm(count)}`;
   }
-
-  /**
-   * Вывод корректно формы слова "раз/раза"
-   * @param n
-   * @returns {string}
-   */
-  getCorrectWordForm(n){
-    if ((n % 100 >= 11 && n % 100 <= 14) || (n % 10 === 1))
-      return `${n} раз`;
-    else if (n % 10 >= 2 && n % 10 <= 4)
-      return `${n} раза`;
-    else
-      return `${n} раз`;
-  };
 
   /**
    * Установка начального значения количества выделений записи
