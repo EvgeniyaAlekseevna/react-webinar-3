@@ -52,7 +52,7 @@ class Store {
     const newCode = this.state.lastCode + 1;
     const newItem = {
       code: newCode,
-      title: `Новая запись_${newCode}`,
+      title: `Новая запись`,
       highlightedCount: 0
     }
 
