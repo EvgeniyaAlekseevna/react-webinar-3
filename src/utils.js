@@ -1,3 +1,5 @@
+import { pluralize } from 'numeralize-ru';
+
 const propNames = new Set(['id', 'className', 'textContent', 'onclick']);
 
 /**
@@ -32,13 +34,8 @@ export function createElement(name, props = {}, ...children) {
  * @param n
  * @returns {string}
  */
-function getCorrectWordForm(n){
-  if ((n % 100 >= 11 && n % 100 <= 14) || (n % 10 === 1))
-    return `раз`;
-  else if (n % 10 >= 2 && n % 10 <= 4)
-    return `раза`;
-  else
-    return `раз`;
+function getCorrectWordForm(n) {
+  return pluralize(n, 'раз', 'раза', 'раз');
 }
 
-export {getCorrectWordForm};
+export { getCorrectWordForm };
