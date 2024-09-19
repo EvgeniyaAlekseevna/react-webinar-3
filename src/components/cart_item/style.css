@@ -1,31 +1,32 @@
-.Item {
+.CartItem {
   display: flex;
-  justify-content: flex-start;
-  transition: background-color 1s;
 }
 
-.Item-code {
+.CartItem-code {
   padding: 20px 10px 20px 20px;
 }
 
-.Item-title {
+.CartItem-title {
   width: 100%;
   padding: 20px 10px;
 }
 
-.Item-cost{
+.CartItem-cost{
   text-align: right;
   width: 100%;
+  padding: 20px;
+}
+
+.CartItem-count{
+  text-align: right;
+  width: 20%;
   padding: 20px 10px 20px 20px;
 }
 
-.Item-actions {
+.CartItem-actions {
   display: flex;
   justify-content: flex-end;
   padding: 20px 20px 20px 10px;
 }
 
-.Item-actions button {
-  width: 80px;
-  max-width: 100%;
-}
+
