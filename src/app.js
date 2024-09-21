@@ -3,7 +3,8 @@ import List from './components/list';
 import Controls from './components/controls';
 import Head from './components/head';
 import PageLayout from './components/page-layout';
-import Modal from "./components/modal";
+import ModalLayout from "./components/modal-layout";
+import Cart from "./components/cart";
 
 /**
  * Приложение
@@ -45,17 +46,19 @@ function App({ store }) {
         amount={basket.amount}
         openShoppingCart={callbacks.openShoppingCart}
       />
-      <Modal
-        basket={basket}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onDelete={callbacks.deleteItemFromCart}
-      />
       <List
         list={list}
-        onAddCartItem={callbacks.onAddCartItem}
+        functionForItem={callbacks.onAddCartItem}
       />
-
+      <ModalLayout
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}>
+        <Cart
+          basket={basket}
+          onClose={() => setIsModalOpen(false)}
+          onDelete={callbacks.deleteItemFromCart}
+        />
+      </ModalLayout>
     </PageLayout>
   );
 }

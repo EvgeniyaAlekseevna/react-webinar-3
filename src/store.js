@@ -50,28 +50,25 @@ class Store {
     if (itemToBasket) {
       this.setState({
         ...this.state,
-        basket:
-          {
-            list: this.state.basket.list.map(item => {
-              if (item.code === code) {
-                item.count += 1
-              }
-              return item;
-            }),
-            count: this.state.basket.count,
-            amount: this.state.basket.amount + itemToBasket.price,
-          }
-      })
+        basket: {
+          ...this.state.basket,
+          list: this.state.basket.list.map(item =>
+            item.code === code ? { ...item, count: item.count + 1 } : item
+          ),
+          amount: this.state.basket.amount + itemToBasket.price,
+        }
+      });
     } else {
       const itemToAdd = this.state.list.find((item) => item.code === code);
       this.setState({
         ...this.state,
-        basket:
-          {
-            list: [...this.state.basket.list, { code: itemToAdd.code, title: itemToAdd.title, price: itemToAdd.price, count: 1 },],
-            count: this.state.basket.count + 1,
-            amount: this.state.basket.amount + itemToAdd.price,
-          }
+        basket: {
+          list: [...this.state.basket.list,
+            { code: itemToAdd.code, title: itemToAdd.title, price: itemToAdd.price, count: 1 },
+          ],
+          count: this.state.basket.count + 1,
+          amount: this.state.basket.amount + itemToAdd.price,
+        }
       });
     }
   }
