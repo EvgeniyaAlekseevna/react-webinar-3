@@ -1,0 +1,9 @@
+.LanguageSelector {
+  position: absolute;
+  right: 1%;
+  top: 5%;
+}
+
+.LanguageSelector button + button {
+  margin-left: 5px;
+}

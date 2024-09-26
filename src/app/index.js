@@ -1,21 +1,23 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
 import Main from './main';
-import Basket from './basket';
-import useStore from '../store/use-store';
-import useSelector from '../store/use-selector';
+import Article from './article';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 
 /**
  * Приложение
  * @returns {React.ReactElement}
  */
 function App() {
-  const activeModal = useSelector(state => state.modals.name);
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+        <>
+          <Route exact path="/" element={<Main />} />
+          <Route exact path='article/:id' element={<Article />} />
+        </>
+    )
+  )
 
   return (
-    <>
-      <Main />
-      {activeModal === 'basket' && <Basket />}
-    </>
+    <RouterProvider router={router}/>
   );
 }
 

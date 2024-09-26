@@ -4,6 +4,16 @@
   justify-content: flex-start;
   transition: background-color 1s;
   padding-left: 10px;
+  
+}
+
+.ItemBasket a {
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .ItemBasket-code {

@@ -1,3 +1,5 @@
+import langData from './langData.json';
+
 /**
  * Плюрализация
  * Возвращает вариант с учётом правил множественного числа под указанную локаль
@@ -33,3 +35,21 @@ export function codeGenerator(start = 0) {
 export function numberFormat(value, locale = 'ru-RU', options = {}) {
   return new Intl.NumberFormat(locale, options).format(value);
 }
+
+// Вспомогательная функция для пагинации
+export function range(start, end) {
+  let length = end - start + 1;
+  return Array.from({ length }, (_, idx) => idx + start);
+}
+
+export function LangSwitcher(lang) {
+  const root = document.documentElement;
+  root.setAttribute("lang", lang);
+
+  for (let key in langData[lang]) {
+    Array.from(document.querySelectorAll(`#${key}`)).forEach((obj) => {
+      obj.innerText = langData[lang][key];
+    })
+  } 
+}
+

@@ -28,12 +28,12 @@ function ModalLayout(props) {
     <div className={cn()} ref={layout}>
       <div className={cn('frame')} ref={frame}>
         <div className={cn('head')}>
-          <h1 className={cn('title')}>{props.title}</h1>
-          <button className={cn('close')} onClick={props.onClose}>
-            Закрыть
-          </button>
+          <h1 className={cn('title')} id="head-cart">{props.title}</h1>
+          <button className={cn('close')} onClick={props.onClose} id="btn-close">Закрыть</button>
         </div>
-        <div className={cn('content')}>{props.children}</div>
+        <div className={cn('content')}>
+          {props.children}
+        </div>
       </div>
     </div>
   );
@@ -47,7 +47,7 @@ ModalLayout.propTypes = {
 
 ModalLayout.defaultProps = {
   title: 'Модалка',
-  onClose: () => {},
+  onClose: () => {}
 };
 
 export default memo(ModalLayout);

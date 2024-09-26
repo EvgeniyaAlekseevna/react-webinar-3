@@ -1,0 +1,25 @@
+{
+  "ru": {
+    "btn-add": "Добавить",
+    "cart": "В корзине:",
+    "btn-cart": "Перейти",
+    "main": "Главная",
+    "head": "Магазин",
+    "btn-close": "Закрыть",
+    "total": "Итого",
+    "head-cart": "Корзина",
+    "btn-delete": "Удалить"
+  },
+  "en": {
+    "btn-add": "Add",
+    "cart": "In cart:",
+    "btn-cart": "To cart",
+    "main": "MainPage",
+    "head": "Shop",
+    "btn-close": "Close",
+    "total": "Total",
+    "head-cart": "Cart",
+    "btn-delete": "Delete"
+  }
+}
+

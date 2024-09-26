@@ -1,16 +1,18 @@
+import { LangSwitcher } from '../utils.js';
 import * as modules from './exports.js';
 
 /**
  * Хранилище состояния приложения
  */
 class Store {
-  constructor(initState = {}) {
+  constructor(initState = {lang: 'ru'}) {
     this.listeners = []; // Слушатели изменений состояния
     this.state = initState;
     /** @type {{
      * basket: Basket,
      * catalog: Catalog,
-     * modals: Modals
+     * modals: Modals,
+     * article: Article,
      * }} */
     this.actions = {};
     for (const name of Object.keys(modules)) {
@@ -57,6 +59,14 @@ class Store {
     this.state = newState;
     // Вызываем всех слушателей
     for (const listener of this.listeners) listener(this.state);
+  }
+
+  setLang(lang) {
+    LangSwitcher(lang);
+    this.setState({
+      ...this.getState(),
+      lang: lang,
+    }, 'Смена языка')
   }
 }
 
